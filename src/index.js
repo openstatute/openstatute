@@ -33,6 +33,11 @@ app.use('/static/uswds', express.static(path.join(__dirname, '..', 'node_modules
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+app.use((req, res, next) => {
+  res.locals.title = null;
+  next();
+});
+
 // routes
 app.get('/', (req, res) => {
   res.render('index', {
@@ -44,12 +49,13 @@ app.get('/law/:entity', (req, res) => {
   res.redirect(`/law/${req.params.entity}/constitution`);
 });
 
-
 app.get('/law/:entity/constitution', routeCache.cacheSeconds(60 * 60 * 60), (req, res, next) => {
   cachedTextFetch(`https://raw.githubusercontent.com/openstatute/us-statutes/production/${req.params.entity}/constitution.md`)
     .then((mdContent) => {
       res.render('law-document', {
-        documentContent: markdown.toHTML(mdContent, 'Maruku'),
+        title: req.params.entity === 'federal' ? 'United States Constitution' : 'Alabama Constitution',
+        id: `${req.params.entity}/constitution`,
+        documentContent: markdown.toHTML(mdContent),
         toc: markdownToc(mdContent, { firsth1: false }).json,
       });
     })
