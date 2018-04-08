@@ -1,0 +1,46 @@
+<% include ./partials/header %>
+
+<main class="usa-grid usa-section usa-content usa-layout-docs" id="main-content">
+  <div class="button-wrapper-container">
+    <div class="button_wrapper">
+      <button class="usa-button usa-button-active">Current Revision</button>
+      <button class="usa-button-secondary" disabled>History (coming soon)</button>
+      <button class="usa-button-secondary" disabled>Discussions (coming soon)</button>
+    </div>
+  </div>
+  <aside class="usa-width-one-fourth usa-layout-docs-sidenav sticky">
+    <ul class="usa-sidenav-list">
+      <li>
+        <a href="javascript:void(0);">United States Constitution</a>
+      </li>
+      <% let openTags = { 2: false, 3: false, 4: false }; %>
+      <% for (let i = 0; i < toc.length; i += 1) { %>
+        <% if (toc[i].lvl < 2 || toc[i].lvl > 4) continue; %>
+        <% for (let j = toc[i].lvl; j <= 4; j += 1) { %>
+          <% if (openTags[j]) { %>
+            </ul></li>
+            <% openTags[j] = false %>
+          <% } %>
+        <% } %>
+        <% openTags[toc[i].lvl] = true; %>
+        <li>
+          <a href="#<%= toc[i].slug %>"><%= toc[i].content %></a>
+          <ul class="usa-sidenav-sub_list">
+      <% }; %>
+      <% for (let j = 2; j <= 4; j += 1) { %>
+        <% if (openTags[j]) { %>
+          </ul></li>
+          <% openTags[j] = false %>
+        <% } %>
+      <% } %>
+      <li>
+        <a href="javascript:void(0);">United States Constitution</a>
+      </li>
+    </ul>
+  </aside>
+  <div class="usa-width-three-fourths usa-layout-docs-main_content" id="document">
+    <%- documentContent %>
+  </div>
+</main>
+
+<% include ./partials/footer %>

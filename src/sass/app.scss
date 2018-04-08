@@ -1,0 +1,45 @@
+$asset-path: '/static/uswds/';
+$text-max-width: 100%;
+
+@import 'node_modules/uswds/src/stylesheets/uswds.scss';
+
+.button-wrapper-container {
+    padding-bottom: 3em;
+    display: flex;
+    justify-content: center;
+}
+
+.usa-hero {
+    background-image: url("/static/img/us-hero.jpg");
+}
+
+.footer-contact-links {
+    margin-top: 3rem;
+    padding-bottom: 2em;
+
+    h4, a {
+      font-size: 1.3rem;
+    }
+
+    h4 {
+      font-family: $font-sans;
+      font-weight: $font-normal;
+      margin-bottom: 0;
+      margin-top: 3px;
+    }
+
+    a {
+      color: $color-primary-darker;
+      text-decoration: underline;
+    }
+
+    .usa-media_block {
+      clear: both;
+      line-height: $heading-line-height;
+      margin-top: 2rem;
+
+      @include media($medium-screen) {
+        margin-top: 0;
+      }
+    }
+  }

@@ -1,0 +1,34 @@
+{
+  "name": "openstatute.org",
+  "version": "0.0.0",
+  "description": "OpenStatute.org",
+  "main": "src/index.js",
+  "repository": "https://github.com/quanglam2807/openstatute.org.git",
+  "author": "Quang Lam <quang.lam2807@gmail.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js",
+    "lint": "eslint ./src --ext js"
+  },
+  "dependencies": {
+    "ejs": "2.5.8",
+    "express": "4.16.3",
+    "markdown": "0.5.0",
+    "markdown-toc": "1.2.0",
+    "nano-cache": "1.1.2",
+    "node-fetch": "2.1.2",
+    "node-sass-middleware": "0.11.0",
+    "route-cache": "0.4.4",
+    "uswds": "1.6.1"
+  },
+  "devDependencies": {
+    "eslint": "4.19.1",
+    "eslint-config-airbnb": "16.1.0",
+    "eslint-plugin-import": "2.10.0",
+    "eslint-plugin-jsx-a11y": "6.0.3",
+    "eslint-plugin-react": "7.7.0",
+    "nodemon": "1.17.3"
+  }
+}
