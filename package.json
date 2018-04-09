@@ -3,25 +3,24 @@
   "version": "0.0.0",
   "description": "OpenStatute.org",
   "main": "src/index.js",
-  "repository": "https://github.com/quanglam2807/openstatute.org.git",
+  "repository": "https://github.com/openstatute/openstatute.git",
   "author": "Quang Lam <quang.lam2807@gmail.com>",
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "dev": "nodemon src/index.js",
-    "start": "node src/index.js",
-    "lint": "eslint ./src --ext js"
+    "gulp": "gulp",
+    "dev": "yarn gulp && nodemon server/index.js",
+    "start": "yarn gulp && node server/index.js",
+    "lint": "eslint ./server --ext js"
   },
   "dependencies": {
     "ejs": "2.5.8",
     "express": "4.16.3",
     "markdown": "0.5.0",
     "markdown-toc": "1.2.0",
+    "moment": "2.22.0",
     "nano-cache": "1.1.2",
-    "node-fetch": "2.1.2",
-    "node-sass-middleware": "0.11.0",
-    "route-cache": "0.4.4",
-    "uswds": "1.6.1"
+    "node-fetch": "2.1.2"
   },
   "devDependencies": {
     "eslint": "4.19.1",
@@ -29,6 +28,12 @@
     "eslint-plugin-import": "2.10.0",
     "eslint-plugin-jsx-a11y": "6.0.3",
     "eslint-plugin-react": "7.7.0",
-    "nodemon": "1.17.3"
+    "gulp": "3.9.1",
+    "gulp-concat": "2.6.1",
+    "gulp-csso": "3.0.1",
+    "gulp-sass": "4.0.1",
+    "gulp-sourcemaps": "2.6.4",
+    "nodemon": "1.17.3",
+    "spectre.css": "0.5.1"
   }
 }

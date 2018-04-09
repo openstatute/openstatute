@@ -1,0 +1,54 @@
+<% include ./partials/header %>
+
+<div class="container grid-lg">
+  <ul class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">Home</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a href="/law/<%= entity %>"><%= entity.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase()) %></a>
+    </li>
+    <li class="breadcrumb-item">
+      <a href="/law/<%= entity %>/<%= documentId %>"><%= documentId.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase()) %></a>
+    </li>
+    <li class="breadcrumb-item">
+      <a href="#">Revision <%= moment(date).format('YYYY-MM-DD') %></a>
+    </li>
+  </ul>
+
+  <ul class="tab tab-block">
+    <li class="tab-item active">
+      <a href="#"  class="active">Current Revision</a>
+    </li>
+    <li class="tab-item">
+      <a href="/law/<%= entity %>/<%= documentId %>/timeline">Timeline</a>
+    </li>
+  </ul>
+
+  <div class="columns">
+    <div class="column col-6 col-md-12 has-bottom-margin">
+      <div class="form-group">
+        <select class="form-select" onchange="location = '/law/<%= entity %>/<%= documentId %>/' + this.value;">
+          <option value="all">Full Text</option>
+          <% let countH2 = 0 %>
+          <% for (let i = 0; i < toc.length; i += 1) { %>
+          <% if (toc[i].lvl !== 2) continue; %>
+          <% countH2 += 1; %>
+          <option value="<%= countH2 %>"<% if (countH2 === sectionIndex) { %> selected<% } %>><%= toc[i].content %></option>
+          <% } %>
+        </select>
+      </div>
+    </div>
+    <div class="column col-6 col-md-12 has-bottom-margin">
+      <span class="float-right">Found an error? <a class="btn" href="http://github.com/openstatute/us-statutes/edit/master/data/<%= entity %>/<%= documentId %>/<%= moment(date).format('YYYY-MM-DD') %>.md">Edit on GitHub</a></span>
+    </div>
+  </div>
+  <div class="has-bottom-margin" id="documet">
+    <%- documentContent %>
+  </div>
+  <div class="toast has-bottom-margin">
+    <b>Disclaimer:</b> This document may not be the most recent version. We make no warranties or guarantees about the accuracy, completeness, or adequacy of the information contained on this site or the information linked to on the state site. Please check official sources.
+  </div>
+</div>
+
+<% include ./partials/footer %>

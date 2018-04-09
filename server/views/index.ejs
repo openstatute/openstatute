@@ -1,0 +1,30 @@
+<% include ./partials/header %>
+
+<section class="usa-hero">
+    <div class="container grid-lg">
+        <div class="columns">
+            <div class="column callout">
+            <h2>Making the law accessible to all</h2>
+            <p>A platform for law, where you can easily access the latest legal documents and track their changes.</p>
+            <a class="btn btn-primary" href="/about">Learn about what we do</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container grid-lg">
+        <div class="columns">
+            <div class="column col-12">
+                <h3><a href="/law/federal/constitution">U.S Constitution</a></h3>
+            </div>
+            <% states.forEach((state) => { %>
+            <div class="column col-3">
+                <p><a href="/law/<%= state.toLowerCase().replace(" ", "-") %>/constitution"><%= state %> Constitution</a></p>
+            </div>
+            <% }); %>
+        </div>
+    </div>
+</section>
+
+<% include ./partials/footer %>

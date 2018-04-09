@@ -1,0 +1,43 @@
+@import "node_modules/spectre.css/src/spectre";
+@import "node_modules/spectre.css/src/spectre-icons";
+
+.navbar {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.usa-hero {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background-image: url(/static/img/us-hero.jpg);
+  background-position: center;
+  background-size: cover;
+  .callout {
+    max-width: 15rem;
+    background-color: #fff;
+    padding: 1rem;
+  }
+}
+
+.section {
+  padding: 1rem 0;
+}
+
+.tab {
+  margin: 1rem 0;
+}
+
+.has-bottom-margin {
+  margin-bottom: 1rem;
+}
+
+footer {
+  padding-bottom: 1rem;
+}
+
+.error {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
