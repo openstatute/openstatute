@@ -18,9 +18,9 @@
             <div class="column col-12">
                 <h3><a href="/law/federal/constitution">U.S Constitution</a></h3>
             </div>
-            <% states.forEach((state) => { %>
-            <div class="column col-3">
-                <p><a href="/law/<%= state.toLowerCase().replace(" ", "-") %>/constitution"><%= state %> Constitution</a></p>
+            <% Object.keys(states).forEach((state) => { %>
+            <div class="column col-3 col-md-6 col-xs-12">
+                <p><a href="/law/<%= state.toLowerCase().replace(" ", "-") %>/constitution" <% if (states[state]) { %>class="text-gray"<% } %>><%= strings[state] %> Constitution</a></p>
             </div>
             <% }); %>
         </div>

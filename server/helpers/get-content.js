@@ -35,7 +35,6 @@ const getContent = (entity, documentId, sectionIndex) => {
   p.push(wrappedFetch(rawUrl)
     .then(res => res.text())
     .then((mdContent) => {
-      console.log(mdContent);
       if (mdContent === '404: Not Found') return Promise.reject(new Error('404: Not Found'));
 
       const toc = markdownToc(mdContent, { firsth1: false }).json;

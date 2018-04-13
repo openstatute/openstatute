@@ -12,16 +12,17 @@
       <a href="/law/<%= entity %>/<%= documentId %>"><%= documentId.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase()) %></a>
     </li>
     <li class="breadcrumb-item">
-      <a href="#">Revision <%= moment(date).format('YYYY-MM-DD') %></a>
+      <a href="#">Version <%= moment(date).format('YYYY-MM-DD') %></a>
     </li>
   </ul>
 
   <ul class="tab tab-block">
     <li class="tab-item active">
-      <a href="#"  class="active">Current Revision</a>
+      <a href="#"  class="active">Current Version</a>
     </li>
     <li class="tab-item">
-      <a href="/law/<%= entity %>/<%= documentId %>/timeline">Timeline</a>
+      <!--<a href="/law/<%= entity %>/<%= documentId %>/timeline">Timeline</a>-->
+      <a href="https://github.com/openstatute/us-statutes/commits/production/<%= entity %>/<%= documentId %>.md">Timeline</a>
     </li>
   </ul>
 
@@ -43,7 +44,7 @@
       <span class="float-right">Found an error? <a class="btn" href="http://github.com/openstatute/us-statutes/edit/master/data/<%= entity %>/<%= documentId %>/<%= moment(date).format('YYYY-MM-DD') %>.md">Edit on GitHub</a></span>
     </div>
   </div>
-  <div class="has-bottom-margin" id="documet">
+  <div class="has-bottom-margin" id="document">
     <%- documentContent %>
   </div>
   <div class="toast has-bottom-margin">

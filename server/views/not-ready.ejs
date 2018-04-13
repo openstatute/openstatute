@@ -1,0 +1,15 @@
+<% include ./partials/head %>
+
+<div class="empty error">
+    <div class="empty-icon">
+        <i class="icon icon-3x icon-flag"></i>
+    </div>
+    <h1 class="empty-title h1"><%= strings[state] %> Constitution is not available yet.</h1>
+    <p class="empty-subtitle h4">Would you like to help us?</p>
+    <div class="empty-action">
+        <a class="btn btn-primary" href="https://github.com/openstatute/us-statutes/issues/<%= states[state] %>">Learn more</a>
+        <a class="btn" href="/">Go to Home Page</a>
+    </div>
+</div>
+
+<% include ./partials/foot %>

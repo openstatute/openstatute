@@ -5,6 +5,7 @@ const moment = require('moment');
 
 const getContent = require('./helpers/get-content');
 const states = require('./constants/states');
+const strings = require('./constants/strings');
 
 const app = express();
 
@@ -21,8 +22,10 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use((req, res, next) => {
   res.locals.moment = moment;
-  res.locals.title = null;
   res.locals.states = states;
+  res.locals.strings = strings;
+
+  res.locals.title = null;
   next();
 });
 
@@ -31,11 +34,19 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
+app.get('/about', (req, res) => {
+  res.render('about');
+});
+
 app.get('/law/:entity', (req, res) => {
   res.redirect(`/law/${req.params.entity}/constitution`);
 });
 
 app.get('/law/:entity/:documentId', (req, res) => {
+  if (req.params.entity !== 'federal' && states[req.params.entity]) {
+    res.render('not-ready', { state: req.params.entity });
+  }
+
   let sectionIndex = 'all';
 
   // special case
